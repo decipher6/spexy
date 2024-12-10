@@ -91,7 +91,11 @@ async def infer_image(file: UploadFile = File(...)):
         random_face_shape = choice(FACE_SHAPES)
         
         # Return the result as JSON
-        result = {"face_shape": random_face_shape}
+        result = {
+            "predictions":[
+                {"class": random_face_shape}
+            ]
+        }
         return JSONResponse(content=result)
     
     except Exception as e:
