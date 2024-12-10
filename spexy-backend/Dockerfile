@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.11.10
 WORKDIR /spexy-backend
 COPY requirements.txt requirements.txt
 
