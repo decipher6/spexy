@@ -11,7 +11,7 @@ COPY . .
 ENV PORT 8080
 
 # Expose the dynamic port to allow Cloud Run to bind the service
-EXPOSE 8080
+EXPOSE $PORT
 
 # Use shell form to properly expand the PORT environment variable
-CMD uvicorn main:app --host 0.0.0.0 --port 8080
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT}
