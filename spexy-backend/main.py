@@ -22,13 +22,13 @@ from requests.adapters import HTTPAdapter
 # Load environment variables
 load_dotenv()
 mongodb_uri = os.getenv('MONGODB_URI')
-ROBOFLOW_API_KEY = os.getenv('RoboflowAPI')
-ROBOFLOW_MODEL = 'face-shape-detection/1'
+# ROBOFLOW_API_KEY = os.getenv('RoboflowAPI')
+# ROBOFLOW_MODEL = 'face-shape-detection/1'
 
-CLIENT = InferenceHTTPClient(
-    api_url="https://detect.roboflow.com",
-    api_key=ROBOFLOW_API_KEY  # Using your existing environment variable
-)
+# CLIENT = InferenceHTTPClient(
+#     api_url="https://detect.roboflow.com",
+#     api_key=ROBOFLOW_API_KEY  # Using your existing environment variable
+# )
 
 # Initialize FastAPI app
 app = FastAPI()
