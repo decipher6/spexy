@@ -13,7 +13,7 @@ import requests
 from bs4 import BeautifulSoup
 from fastapi.responses import JSONResponse
 from fastapi import File  # Add this if not already imported
-from inference_sdk import InferenceHTTPClient
+#from inference_sdk import InferenceHTTPClient
 
 
 
