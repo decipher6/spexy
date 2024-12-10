@@ -8,7 +8,7 @@ requests
 beautifulsoup4
 selenium
 python-multipart
-inference-sdk
+inference_sdk
 pydantic
 urllib3
 httpx
