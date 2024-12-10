@@ -14,9 +14,7 @@ from bs4 import BeautifulSoup
 from fastapi.responses import JSONResponse
 from fastapi import File  # Add this if not already imported
 from inference_sdk import InferenceHTTPClient
-import io
-from urllib3.util.retry import Retry
-from requests.adapters import HTTPAdapter
+
 
 
 # Load environment variables
