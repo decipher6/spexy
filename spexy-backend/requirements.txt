@@ -9,3 +9,8 @@ BeautifulSoup4
 selenium
 python-multipart
 inference-sdk
+pydantic
+bson
+gridfs-fuse
+urllib3
+httpx
