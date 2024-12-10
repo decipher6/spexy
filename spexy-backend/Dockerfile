@@ -1,22 +1,12 @@
-FROM python:3.9-slim
+FROM python:3.9
+WORKDIR /spexy-backend
+COPY requirements.txt requirements.txt
 
-# Set working directory
-WORKDIR /app
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy requirements and install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the entire project
+RUN pip install -r requirements.txt
 COPY . .
-
-# Expose the port
-EXPOSE 8080
-
-# Use the PORT environment variable for uvicorn
-CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}
+# Use the dynamic PORT environment variable (Cloud Run expects this to be 8080 by default)
+ENV PORT 8080
+# Expose the dynamic port to allow Cloud Run to bind the service
+EXPOSE $PORT
+# Use shell form to properly expand the PORT environment variable
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT}
