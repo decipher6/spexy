@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 FROM python:3.9
 WORKDIR /spexy-backend
 COPY requirements.txt requirements.txt
