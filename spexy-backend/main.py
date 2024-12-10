@@ -79,38 +79,22 @@ def convert_objectid(obj):
         return str(obj)
     return obj
 
-# endpoint to infer the face shape using roboflow api
-# @app.post("/infer")
-# async def infer_image(file: UploadFile):
-#     """
-#     Endpoint to handle image inference requests.
-#     Accepts an image file, sends it to the Roboflow API, and returns the response.
-#     """
-#     if not ROBOFLOW_API_KEY:
-#         raise HTTPException(status_code=500, detail="Roboflow API key is not configured.")
+# Predefined list of face shapes
+FACE_SHAPES = ["round", "square", "diamond", "oval", "heart"]
 
-#     try:
-#         # Read the uploaded image file
-#         image_data = await file.read()
-
-#         # Prepare the request to Roboflow API
-#         url = f"https://detect.roboflow.com/{MODEL_ENDPOINT}"
-#         params = {"api_key": ROBOFLOW_API_KEY}
-#         headers = {"Content-Type": "application/x-www-form-urlencoded"}
-
-#         async with httpx.AsyncClient() as client:
-#             response = await client.post(url, params=params, content=image_data, headers=headers)
-
-#         # Handle response from Roboflow API
-#         if response.status_code == 200:
-#             return JSONResponse(content=response.json())
-#         else:
-#             raise HTTPException(
-#                 status_code=response.status_code,
-#                 detail=f"Error from Roboflow: {response.text}"
-#             )
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
+@app.post("/infer")
+async def infer_image():
+    try:
+        # Pick a random face shape
+        random_face_shape = choice(FACE_SHAPES)
+        
+        # Return the result as JSON
+        result = {"face_shape": random_face_shape}
+        return JSONResponse(content=result)
+    
+    except Exception as e:
+        print(f"Error processing request: {str(e)}")
+        raise HTTPException(status_code=500, detail="An unexpected error occurred.")
 
 # @app.post("/infer")
 # async def infer_image(file: UploadFile = File(...)):
