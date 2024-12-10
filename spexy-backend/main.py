@@ -85,7 +85,7 @@ def convert_objectid(obj):
 FACE_SHAPES = ["round", "square", "diamond", "oval", "heart"]
 
 @app.post("/infer")
-async def infer_image():
+async def infer_image(file: UploadFile = File(...)):
     try:
         # Pick a random face shape
         random_face_shape = choice(FACE_SHAPES)
